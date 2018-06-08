@@ -1,0 +1,44 @@
+import React from "react";
+import { render } from "react-dom";
+import axios from "axios";
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = { member: [] };
+  }
+  // getJson発火して、Json取得→取得したらstateが変更となるので再度renderする
+  render() {
+    //    console.log(this.state.member);
+    return (
+      <div>
+        <button onClick={this.getJson}>Get Json</button>
+        {this.memberList(this.state.member)}
+      </div>
+    );
+  }
+
+  //取得したJsonのリスト作成
+  memberList(list) {
+    const memberList = list.map((member, index) => {
+      return (
+        <li>
+          {member.name} {member.age}
+        </li>
+      );
+    });
+    return <ul>{memberList}</ul>;
+  }
+
+  // urlへJsonを取得し、setStateで格納
+  getJson = () => {
+    const url = "https://api.myjson.com/bins/17fh16";
+
+    axios.get(url).then(res => {
+      //     console.log(res.data);
+      this.setState(res.data);
+    });
+  };
+}
+
+render(<App />, document.getElementById("root"));

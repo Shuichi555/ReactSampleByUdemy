@@ -1,0 +1,47 @@
+import React from "react";
+import { render } from "react-dom";
+
+const array1 = [1, 2, 3, 4, 5];
+
+//配列のmapメソッド(outputはarray1の各要素、indexは配列各要素の番号)
+const newArray1 = array1.map((output, index) => {
+  //新しい配列を返す
+  return `${index}番目は${output}です！！`;
+});
+
+//console.log(newArray1);
+
+const array2 = ["Chissy", "Bruno", "Tanaka", "Sasaki", "WhoAreYou?"];
+
+//配列のmapメソッド(outputはarray1の各要素、indexは配列各要素の番号)
+const newArray2 = array2.map((output, index) => {
+  //新しい配列を返す
+  return `${index}番目は${output}さんです！！`;
+});
+//console.log(newArray2);
+
+const array3 = [1, 2, 3, 4, 5];
+
+//配列のfilterメソッド(outputはarray1の各要素、indexは配列各要素の番号)
+//trueが返ってくるoutputで構成された新しい配列を返す
+const newArray3 = array3.filter((output, index) => {
+  return output > 3;
+});
+
+console.log(newArray3);
+
+const array4 = ["Chissy", "Bruno", "WhoAreYou?"];
+
+const newArray4 = array4.filter((output, index) => {
+  //等しい要素のみの新しい配列を返す
+  return output === "Bruno";
+});
+console.log(newArray4);
+
+const newArray5 = array4.filter((output, index) => {
+  //要素の文字数が5以上のみの新しい配列を返す
+  return output.length > 5;
+});
+console.log(newArray5);
+
+//render(<App />, document.getElementById("root"));

@@ -1,0 +1,29 @@
+import React from "react";
+import { render } from "react-dom";
+
+//import { var1, function1, ReactComponent } from "./module";
+import { ReactComponent1 } from "./ReactComponent1";
+
+render(
+  <ReactComponent1 name="Chissy" music="Bruno Mars" />,
+  document.getElementById("root")
+);
+
+/*
+const ReturnReactElement = ({ name, music }) => {
+  return (
+    <h2>
+      {name} {music}
+    </h2>
+  );
+};
+render(
+  <ReturnReactElement name="Chissy" music="Bruno Mars" />,
+  document.getElementById("root")
+);
+*/
+/*
+console.log(var1);
+function1();
+render(<ReactComponent />, document.getElementById("root"));
+*/

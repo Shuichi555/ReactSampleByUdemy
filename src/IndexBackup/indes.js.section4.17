@@ -1,0 +1,17 @@
+class Human {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  callMyProfile() {
+    console.log(this.name, this.age, "callMyProfile");
+  }
+}
+
+const Chissy = new Human("Chissy", 30);
+console.log(Chissy);
+Chissy.callMyProfile();
+
+const Tanaka = new Human("Tanaka", 40);
+console.log(Tanaka);
+Tanaka.callMyProfile();

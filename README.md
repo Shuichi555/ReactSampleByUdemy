@@ -1,2 +1,0 @@
-# ReactSampleByUdemy
-Created with CodeSandbox

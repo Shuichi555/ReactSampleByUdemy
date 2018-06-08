@@ -1,0 +1,50 @@
+//index.js for Redux1 App
+
+import React from "react";
+import { render } from "react-dom";
+
+// applyMiddlewareを追加
+import { createStore, applyMiddleware } from "redux";
+import rootReducer from "./Redux1/reducers";
+
+// Logicが記載されたcontainersのAppを呼び出し
+import App from "./Redux1/containers/App";
+
+//ReactでReduxを使用するためにProviderでラップする
+import { Provider } from "react-redux";
+
+// redux-thunk
+import thunk from "redux-thunk";
+
+const middleWares = [thunk];
+
+// redux-thunkはここのミドルウェア
+//const store = createStore(rootReducer);
+
+// middleware を追加
+// 「...middleWare(配列obj)」 →　”配列の中身を１つずつ渡す”（今回は1つthunkのみ渡している）
+const store = createStore(rootReducer, applyMiddleware(...middleWares));
+
+//console.log(store);
+
+/*stateが変更された場合に実行されるメソッド(subscribe)
+store.subscribe(() => {
+  console.log(store.getState());
+});
+*/
+
+/*stateの変更をするためにdispatchメソッド起動(typeでスイッチング)
+store.dispatch({ type: "PLUS", payload: { num: 1 } });
+store.dispatch({ type: "PLUS", payload: { num: 10 } });
+
+store.dispatch({ type: "MINUS", payload: { num: 1 } });
+store.dispatch({ type: "MINUS", payload: { num: 10 } });
+*/
+
+//ReactでReduxを使用するために、Providerにreducerを渡す
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);

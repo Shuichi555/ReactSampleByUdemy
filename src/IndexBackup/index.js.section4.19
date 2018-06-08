@@ -1,0 +1,38 @@
+import React from "react";
+import { render } from "react-dom";
+
+// React.Componentを継承したクラスを作成する
+class Human extends React.Component {
+  // JSと同様コンストラクタ宣言、super（諸性質を受け継いで運用するために必要、ほぼ定型文）
+  constructor(props) {
+    super(props);
+    //stateの宣言
+    this.state = { name: "Chissy" };
+  }
+  //Reactクラスに必須メソッド
+  render() {
+    return (
+      <h2 onClick={this.onButtonClick}>
+        {this.state.name}
+        {this.props.age}
+      </h2>
+    );
+  }
+  /*JSXのコールバック内で実行する場合、このように記載する必要がある
+  onButtonClick = () => {
+    this.setState({ name: "Name is Changed: I'm Bruno!!" });
+  */
+  //onPressの度にstate.nameにさんが足されていく
+  onButtonClick = () => {
+    this.setState({ name: this.state.name + "さん" });
+  };
+}
+
+/*この記載だと、JSXのコールバック内で実行した場合thisの場所があいまいとなりエラーとなる
+onButtonClick() {
+  this.setState({ name: "Name is Changed: I'm Bruno!!" });
+ }
+*/
+
+//ageはprops(外部からの変数)、nameはstate（内部に持つ変数）
+render(<Human age="30" />, document.getElementById("root"));
